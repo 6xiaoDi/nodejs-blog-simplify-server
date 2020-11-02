@@ -4,7 +4,8 @@ const serverHandle = (req, res) => {
 
     const resData = {
         name: '6xiaodi',
-        site: 'https://me.csdn.net/u013946061'
+        site: 'https://me.csdn.net/u013946061',
+        env: process.env.NODE_ENV
     }
 
     res.end(
