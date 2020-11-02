@@ -1,14 +1,23 @@
 const http = require('http')
-const querystring = require('querystring')
 
 const server = http.createServer((req, res) => {
-    const method = req.method
-    console.log('method: ', method)
-    const url = req.url
-    console.log('url: ', url)
-    req.query = querystring.parse(url.split('?')[1])  // 解析 querystring
-    console.log('query: ', req.query)
-    res.end(JSON.stringify(req.query)); // 将 querystring 返回
+    if (req.method === 'POST') {
+        // req 数据格式
+        console.log('req content-type', req.headers['content-type']);
+        // 接收数据（数据流的方式）
+        let postData = ''
+        req.on('data', chunk => {
+            postData += chunk.toString()
+        })
+        // 数据流完，触发end事件
+        req.on('end', () => {
+            console.log(postData)
+            // 在这里返回，因为是异步
+            res.end(
+                'hello world'
+            )
+        })
+    }
 })
 
 server.listen(8000)
