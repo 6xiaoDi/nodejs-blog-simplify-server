@@ -18,4 +18,10 @@ function getFileContent(fileName, callback) {
 // 测试
 getFileContent('a.json', aData => {
     console.log('a data => ', aData);
+    getFileContent(aData.next, bData => {
+        console.log('b data => ', bData);
+        getFileContent(bData.next, cData => {
+            console.log('c data => ', cData);
+        })
+    })
 })
