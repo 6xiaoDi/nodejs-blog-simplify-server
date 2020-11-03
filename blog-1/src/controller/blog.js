@@ -38,8 +38,16 @@ const newBlog = (blogData = {}) => {
     }
 }
 
+const updateBlog = (id, blogData = {}) => {
+    // id 就是要更新博客的 id
+    // blogData 是一个博客对象，包含 title content author 属性
+    console.log('updateBlog  blog...', id, blogData);
+    return true;
+}
+
 module.exports = {
     getList,
     getDetail,
-    newBlog
+    newBlog,
+    updateBlog
 }
