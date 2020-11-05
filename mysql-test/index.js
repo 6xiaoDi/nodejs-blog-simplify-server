@@ -14,8 +14,8 @@ con.connect()
 
 // 执行 sql 语句
 // const sql = 'select * from users;';
-const sql = `update users set realname='李四2' where username='lisi'`;
-// const sql = `insert into blogs (title, content, createtime, author) values ('标题C', '内容C',1546871704408, 'zhangsan')`
+// const sql = `update users set realname='李四2' where username='lisi'`;
+const sql = `insert into blogs (title, content, createtime, author) values ('标题C', '内容C',1546871704408, 'zhangsan')`
 
 // 异步
 con.query(sql, (err, result) => {
