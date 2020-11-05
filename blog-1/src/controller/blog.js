@@ -15,14 +15,11 @@ const  getList = (author, keyword) => {
 }
 
 const getDetail = (id) => {
-    // 先返回假数据
-    return {
-        id: 1,
-        title: "标题A",
-        content: "内容A",
-        createTime: 1604368609540,
-        author:"zhangsan"
-    }
+    const sql = `select * from blogs where id='${id}'`
+    return exec(sql).then(rows => {
+        // 查询的是单条数据
+        return rows[0]
+    })
 }
 
 const newBlog = (blogData = {}) => {
