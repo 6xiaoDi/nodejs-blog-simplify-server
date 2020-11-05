@@ -46,12 +46,20 @@ const handleBlogRouter = (req, res) => {
 
     // 更新一篇博客
     if (method === 'POST' && req.path === '/api/blog/update') {
-        const result = updateBlog(id, req.body);
-        if (result) {
-            return new SuccessModel("更新博客成功");
-        } else {
-            return new ErrorModel('更新博客失败');
-        }
+        // const result = updateBlog(id, req.body);
+        // if (result) {
+        //     return new SuccessModel("更新博客成功");
+        // } else {
+        //     return new ErrorModel('更新博客失败');
+        // }
+        const result = updateBlog(id, req.body)
+        return result.then(val => {
+            if (val) {
+                return new SuccessModel("更新博客成功")
+            } else {
+                return new ErrorModel('更新博客失败')
+            }
+        })
     }
 
     // 删除一篇博客

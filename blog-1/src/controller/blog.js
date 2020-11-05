@@ -44,9 +44,22 @@ const newBlog = (blogData = {}) => {
 
 const updateBlog = (id, blogData = {}) => {
     // id 就是要更新博客的 id
-    // blogData 是一个博客对象，包含 title content author 属性
-    console.log('updateBlog  blog...', id, blogData);
-    return true;
+    // blogData 是一个博客对象，包含 title content 属性
+
+    const title = blogData.title
+    const content = blogData.content
+
+    const sql = `
+        update blogs set title='${title}', content='${content}' where id=${id}
+    `
+
+    return exec(sql).then(updateData => {
+        console.log('updateData is ', updateData)
+        if (updateData.affectedRows > 0) {
+            return true
+        }
+        return false
+    })
 }
 
 module.exports = {
