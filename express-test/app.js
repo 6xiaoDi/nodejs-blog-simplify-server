@@ -47,10 +47,7 @@ function loginCheck(req, res, next) {
     // 定时器模拟异步
     setTimeout(() => {
         console.log('模拟登陆成功')
-        res.json({
-            errno: 0,
-            msg: '登录成功'
-        })
+        next()
     })
 }
 
