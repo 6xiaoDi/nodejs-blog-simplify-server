@@ -46,8 +46,11 @@ app.post('/api', (req, res, next) => {
 function loginCheck(req, res, next) {
     // 定时器模拟异步
     setTimeout(() => {
-        console.log('模拟登陆成功')
-        next()
+        console.log('模拟登陆失败')
+        res.json({
+            errno: -1,
+            msg: '登录失败'
+        })
     })
 }
 
