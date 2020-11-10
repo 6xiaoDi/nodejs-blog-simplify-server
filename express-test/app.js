@@ -5,7 +5,7 @@ const app = express()
 
 app.use((req, res, next) => {
     console.log('请求开始...', req.method, req.url)
-    // next()
+    next()
 })
 
 app.use((req, res, next) => {
@@ -42,7 +42,19 @@ app.post('/api', (req, res, next) => {
     next()
 })
 
-app.get('/api/get-cookie', (req, res, next) => {
+// 模拟登录验证
+function loginCheck(req, res, next) {
+    // 定时器模拟异步
+    setTimeout(() => {
+        console.log('模拟登陆成功')
+        res.json({
+            errno: 0,
+            msg: '登录成功'
+        })
+    })
+}
+
+app.get('/api/get-cookie', loginCheck, (req, res, next) => {
     console.log('get /api/get-cookie')
     res.json({
         errno: 0,
@@ -50,13 +62,14 @@ app.get('/api/get-cookie', (req, res, next) => {
     })
 })
 
-app.post('/api/get-post-data', (req, res, next) => {
+app.post('/api/get-post-data', loginCheck, (req, res, next) => {
     console.log('post /api/get-post-data')
     res.json({
         errno: 0,
         data: req.body
     })
 })
+
 
 app.use((req, res, next) => {
     console.log('处理 404')
