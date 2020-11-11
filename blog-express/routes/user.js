@@ -12,4 +12,17 @@ router.post('/login', (req, res, next) => {
     });
 });
 
+router.get('/session-test', (req, res, next) => {
+    const session = req.session
+    // session记录浏览次数
+    if (session.viewNum == null) {
+        session.viewNum = 0
+    }
+    session.viewNum++
+
+    res.json({
+        viewNum: session.viewNum
+    })
+})
+
 module.exports = router;
