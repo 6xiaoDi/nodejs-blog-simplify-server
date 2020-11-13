@@ -50,7 +50,10 @@ app.use(session({
   // 配置 redis
   store: redisStore({
     // all: '127.0.0.1:6379'   // 写死本地的 redis
-    all: `${REDIS_CONF.host}:${REDIS_CONF.port}`
+    // all: `${REDIS_CONF.host}:${REDIS_CONF.port}`
+      port:REDIS_CONF.port,
+      host:REDIS_CONF.host,
+      password:REDIS_CONF.password
   })
 }))
 
