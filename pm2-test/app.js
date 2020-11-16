@@ -1,6 +1,11 @@
 const http = require('http')
 
 const server = http.createServer((req, res) => {
+    // 模拟日志
+    console.log('cur time', Date.now())
+    // 模拟错误
+    console.error('假装出错', Date.now())
+
     res.setHeader('Content-type', 'application/json')
     res.end(
         JSON.stringify({
@@ -11,4 +16,4 @@ const server = http.createServer((req, res) => {
 })
 
 server.listen(8051)
-console.log('server is listening on port 801 ...')
+console.log('server is listening on port 8051 ...')
