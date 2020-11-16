@@ -6,6 +6,11 @@ const server = http.createServer((req, res) => {
     // 模拟错误
     console.error('假装出错', Date.now())
 
+    // 模拟一个错误
+    if (req.url === '/err') {
+        throw new Error('/err 出错了')
+    }
+
     res.setHeader('Content-type', 'application/json')
     res.end(
         JSON.stringify({
